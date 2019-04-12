@@ -1,7 +1,8 @@
 import routes from "./routes";
+import app from "./app";
 
 export const localsMiddleware = (req, res, next) => {
-  res.locals.siteName = "Wetube";
-  res.locals.routes = routes;
+  app.locals.siteName = "Wetube";
+  app.locals.routes = routes;
   next();
 };
