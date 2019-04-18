@@ -27,7 +27,7 @@
     "sass-loader": "^7.1.0"
   },
   "scripts": {
-    "dev:server": "nodemon --delay 2 --exec babel-node init.js",
+    "dev:server": "nodemon --delay 2 --exec babel-node init.js --ignore `scss`",
     "dev:assets": "WEBPACK_ENV=development webpack -w",
     "build:assets": "WEBPACK_ENV=production webpack"
   },

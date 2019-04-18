@@ -13,6 +13,8 @@ const app = express();
 
 app.set("view engine", "pug");
 app.use(helmet());
+app.use("/static", express.static("static"));
+app.use("/uploads", express.static("uploads"));
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -21,7 +23,5 @@ app.use(localsMiddleware);
 app.use(routes.home, globalRouter);
 app.use(routes.users, userRouter);
 app.use(routes.videos, videoRouter);
-app.use("/uploads", express.static("uploads"));
-app.use("/static", express.static("static"));
 
 export default app;

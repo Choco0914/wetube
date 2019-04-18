@@ -5,7 +5,6 @@ const autoprefixer = require("autoprefixer");
 
 const MODE = process.env.WEBPACK_ENV;
 const ENTRY_FILE = path.resolve(__dirname, "assets", "js", "main.js");
-// 절대 경로 설정을 우ㅣ해 path.resolve()함수를 사용했다.
 const OUTPUT_DIR = path.join(__dirname, "static");
 
 const config = {
@@ -20,7 +19,6 @@ const config = {
       {
         test: /\.(scss$)/,
         use: ExtractCSS.extract([
-          // 이안에서는 webpack이 코드를 거꾸로 인식하게 된다.
           {
             loader: "css-loader"
           },
