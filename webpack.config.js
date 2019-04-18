@@ -5,14 +5,18 @@ const autoprefixer = require("autoprefixer");
 
 const MODE = process.env.WEBPACK_ENV;
 const ENTRY_FILE = path.resolve(__dirname, "assets", "js", "main.js");
-// 절대 경로 설정을 우ㅣ해 path.resolve()함수르 ㄹ사용했다.
+// 절대 경로 설정을 우ㅣ해 path.resolve()함수를 사용했다.
 const OUTPUT_DIR = path.join(__dirname, "static");
 
 const config = {
-  entry: ENTRY_FILE,
+  entry: ["@babel/polyfill", ENTRY_FILE],
   mode: MODE,
   module: {
     rules: [
+      {
+        test: /\.(js)$/,
+        use: [{ loader: "babel-loader" }]
+      },
       {
         test: /\.(scss$)/,
         use: ExtractCSS.extract([
