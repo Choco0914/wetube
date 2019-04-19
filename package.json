@@ -31,8 +31,8 @@
   },
   "scripts": {
     "dev:server": "nodemon --delay 2 --exec babel-node init.js --ignore `scss`",
-    "dev:assets": "WEBPACK_ENV=development webpack -w",
-    "build:assets": "WEBPACK_ENV=production webpack"
+    "dev:assets": "webpack --mode=development -w",
+    "build:assets": "webpack --mode=production"
   },
   "devDependencies": {
     "eslint": "^5.16.0",
