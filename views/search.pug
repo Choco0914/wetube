@@ -6,7 +6,7 @@ block content
         h3 Searching for: #{searchingFor}
     .search__videos
         if videos.length === 0
-            h5 비디오가 존재하지 않습니다.
+            h5 #{searchingFor} 가 존재하지 않습니다.
         each item in videos
             +videoBlock({
                 title: item.title,
