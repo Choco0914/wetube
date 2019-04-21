@@ -59,7 +59,6 @@ export const githubLoginCallback = async (_, __, profile, cb) => {
       githubId: id,
       avatarUrl
     });
-    console.log(newUser);
     return cb(null, newUser);
   } catch (error) {
     return cb(error);
@@ -98,7 +97,6 @@ export const googleLoginCallback = async (_, __, profile, cb) => {
       googleId: id,
       avatarUrl
     });
-    console.log(newUser);
     return cb(null, newUser);
   } catch (error) {
     return cb(error);
@@ -110,7 +108,7 @@ export const logout = (req, res) => {
   res.redirect(routes.home);
 };
 
-export const getMe = (req, res) => {
+export const getMe = async (req, res) => {
   res.render("userDetail", { pageTitle: "User Detail", user: req.user });
 };
 
@@ -126,7 +124,26 @@ export const userDetail = async (req, res) => {
   }
 };
 
-export const editProfile = (req, res) =>
+export const getEditProfile = (req, res) => {
   res.render("editProfile", { pageTitle: "Edit Profile" });
+};
+
+export const postEditProfile = async (req, res) => {
+  const {
+    body: { name, email },
+    file
+  } = req;
+  try {
+    await User.findByIdAndUpdate(req.user.id, {
+      name,
+      email,
+      avatarUrl: file ? file.path : req.user.avatarUrl
+    });
+    res.redirect(routes.me);
+  } catch (error) {
+    res.render("editProfile", { pageTitle: "Edit Profile" });
+  }
+};
+
 export const changePassword = (req, res) =>
   res.render("changePassword", { pageTitle: "Change Password" });
