@@ -105,7 +105,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _scs
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("var videoContainer = document.querySelector(\"#jsVideoPlayer\");\nvar videoPlayer = videoContainer.querySelector(\"video\");\nvar playBtn = videoContainer.querySelector(\"#jsPlayButton\");\n\nfunction handlePlayClick() {\n  if (videoPlayer.paused) {\n    videoPlayer.play();\n  } else {\n    videoPlayer.pause();\n  }\n}\n\nfunction init() {\n  playBtn.addEventListener(\"click\", handlePlayClick);\n}\n\nif (videoContainer) {\n  init();\n}\n\n//# sourceURL=webpack:///./assets/js/videoPlayer.js?");
+eval("var videoContainer = document.querySelector(\"#jsVideoPlayer\");\nvar videoPlayer = videoContainer.querySelector(\"video\");\nvar playBtn = videoContainer.querySelector(\"#jsPlayButton\");\nvar volumeBtn = videoContainer.querySelector(\"#jsVolumeBtn\");\n\nfunction handlePlayClick() {\n  if (videoPlayer.paused) {\n    videoPlayer.play();\n    playBtn.innerHTML = '<i class=\"fas fa-pause\"></i>';\n  } else {\n    videoPlayer.pause();\n    playBtn.innerHTML = '<i class=\"fas fa-play\"></i>';\n  }\n}\n\nfunction handleVolumeClick() {\n  if (videoPlayer.muted === false) {\n    videoPlayer.muted = true;\n    volumeBtn.innerHTML = \"<i class=\\\"fas fa-volume-mute\\\"></i>\";\n  } else {\n    videoPlayer.muted = false;\n    volumeBtn.innerHTML = '<i class=\"fas fa-volume-up\"></i>';\n  }\n}\n\nfunction init() {\n  playBtn.addEventListener(\"click\", handlePlayClick);\n  volumeBtn.addEventListener(\"click\", handleVolumeClick);\n}\n\nif (videoContainer) {\n  init();\n}\n\n//# sourceURL=webpack:///./assets/js/videoPlayer.js?");
 
 /***/ }),
 

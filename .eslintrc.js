@@ -16,5 +16,8 @@ module.exports = {
     "no-console": "off",
     "import/no-cycle": "off",
     "import/newline-after-import": "off"
+  },
+  env: {
+    browser: true
   }
 };
