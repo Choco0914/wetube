@@ -32,6 +32,9 @@ block content
                 input(type="text", placeholder="댓글을 입력하세요!")
             ul.video__comments-list#jsCommentList
                 each comment in video.comments.reverse()
-                    li
-                        span=comment.text
-                
+                    li(id=String(comment._id))  
+                        if loggedUser && (String(comment.creator) === loggedUser.id)
+                            span.jsCommnet=comment.text
+                                button(id=String(comment._id)) 삭제하기 ❌
+                        else 
+                            span=comment.text
