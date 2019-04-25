@@ -1,5 +1,6 @@
 import axios from "axios";
 import routes from "../../routes";
+
 const addCommentForm = document.getElementById("jsAddComment");
 const commentList = document.getElementById("jsCommentList");
 const commentNumber = document.getElementById("jsCommentNumber");
