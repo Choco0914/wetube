@@ -9,10 +9,41 @@ const increaseNumber = () => {
   commentNumber.innerHTML = parseInt(commentNumber.innerHTML, 10) + 1;
 };
 
-const addComment = comment => {
+const decreaseNum = () => {
+  commentNumber.innerHTML = parseInt(commentNumber.innerHTML, 10) - 1;
+};
+
+const delComment = (id, target) => {
+  const span = target.parentElement;
+  const li = span.parentElement;
+  commentList.removeChild(li);
+  decreaseNum();
+};
+
+const handleClick = async event => {
+  const target = event.target;
+  const commentId = target.id;
+  const response = await axios({
+    url: `${routes.api}/${commentId}/comment/delete`,
+    method: "POST",
+    data: {
+      commentId
+    }
+  });
+  if (response.status === 200) {
+    delComment(commentId, target);
+  }
+};
+
+const addComment = (comment, commentID) => {
   const li = document.createElement("li");
   const span = document.createElement("span");
+  const delBtn = document.createElement("button");
   span.innerHTML = comment;
+  delBtn.id = String(commentID);
+  delBtn.innerText = "삭제하기 ❌";
+  delBtn.addEventListener("click", handleClick);
+  span.appendChild(delBtn);
   li.appendChild(span);
   commentList.prepend(li);
   increaseNumber();
@@ -28,7 +59,7 @@ const sendComment = async comment => {
     }
   });
   if (response.status === 200) {
-    addComment(comment);
+    addComment(comment, response.data._id);
   }
 };
 
