@@ -32,7 +32,7 @@ const startRecording = () => {
 const getVideo = async () => {
   try {
     const stream = await navigator.mediaDevices.getUserMedia({
-      video: true,
+      video: { width: 1280, height: 720 },
       audio: true
     });
     videoPreview.srcObject = stream;
