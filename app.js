@@ -1,4 +1,3 @@
-import dotenv from "dotenv";
 import express from "express";
 import morgan from "morgan";
 import helmet from "helmet";
@@ -20,8 +19,6 @@ import "./passport";
 const app = express();
 
 const CokieStore = MongoStore(session);
-
-dotenv.config();
 
 app.use(helmet());
 app.set("view engine", "pug");

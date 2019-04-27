@@ -1,4 +1,7 @@
+import dotenv from "dotenv";
 import getBlobDuration from "get-blob-duration";
+
+dotenv.config();
 
 const videoContainer = document.getElementById("jsVideoPlayer");
 const videoPlayer = document.querySelector("#jsVideoPlayer video");
@@ -90,9 +93,9 @@ function getCurrentTime() {
 }
 
 async function setTotalTime() {
-  const blob = await fetch(videoPlayer.src).then(console.log);
-  console.log(blob);
-  const totalTimeString = formatDate(videoPlayer.duration);
+  const blob = await fetch(videoPlayer.src).then(response => response.blob());
+  const duration = await getBlobDuration(blob);
+  const totalTimeString = formatDate(duration);
   totalTime.innerHTML = totalTimeString;
   setInterval(getCurrentTime, 1000);
 }

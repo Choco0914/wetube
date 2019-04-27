@@ -1,10 +1,11 @@
+import dotevn from "dotenv";
 import multer from "multer";
 import multerS3 from "multer-s3";
 import aws from "aws-sdk";
-import dotenv from "dotenv";
 import routes from "./routes";
 import app from "./app";
-dotenv.config();
+
+dotevn.config();
 
 const s3 = new aws.S3({
   accessKeyId: process.env.AWS_KEY,
