@@ -1,7 +1,4 @@
-import dotenv from "dotenv";
 import getBlobDuration from "get-blob-duration";
-
-dotenv.config();
 
 const videoContainer = document.getElementById("jsVideoPlayer");
 const videoPlayer = document.querySelector("#jsVideoPlayer video");
